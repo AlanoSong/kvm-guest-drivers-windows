@@ -397,9 +397,9 @@ NTSTATUS VioGpuAllocation::GetStandardAllocationDriverData(DXGKARG_GETSTANDARDAL
                 DbgPrint(TRACE_LEVEL_ERROR,
                          ("<--- %s shared primary surface: width=%d, height=%d, format=%d\n",
                           __FUNCTION__,
-                          surfaceData->Width,
-                          surfaceData->Height,
-                          surfaceData->Format));
+                          allocationExchange->ResourceOptions.width,
+                          allocationExchange->ResourceOptions.height,
+                          allocationExchange->ResourceOptions.format));
                 return STATUS_SUCCESS;
             }
 
@@ -421,9 +421,9 @@ NTSTATUS VioGpuAllocation::GetStandardAllocationDriverData(DXGKARG_GETSTANDARDAL
                 DbgPrint(TRACE_LEVEL_ERROR,
                          ("<--- %s shadow surface: width=%d, height=%d, format=%d\n",
                           __FUNCTION__,
-                          surfaceData->Width,
-                          surfaceData->Height,
-                          surfaceData->Format));
+                          allocationExchange->ResourceOptions.width,
+                          allocationExchange->ResourceOptions.height,
+                          allocationExchange->ResourceOptions.format));
                 return STATUS_SUCCESS;
             }
 
@@ -442,7 +442,11 @@ NTSTATUS VioGpuAllocation::GetStandardAllocationDriverData(DXGKARG_GETSTANDARDAL
                 allocationExchange->ResourceOptions.flags |= VIRGL_RESOURCE_FLAG_MAP_COHERENT;
 
                 surfaceData->Pitch = surfaceData->Width * 4;
-                DbgPrint(TRACE_LEVEL_ERROR, ("<--- %s staging surface\n", __FUNCTION__));
+                DbgPrint(TRACE_LEVEL_ERROR, ("<--- %s staging surface: width=%d, height=%d, format=%d\n",
+                                             __FUNCTION__,
+                                             allocationExchange->ResourceOptions.width,
+                                             allocationExchange->ResourceOptions.height,
+                                             allocationExchange->ResourceOptions.format));
                 return STATUS_SUCCESS;
             }
 

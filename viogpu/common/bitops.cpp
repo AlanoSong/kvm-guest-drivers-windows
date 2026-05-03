@@ -1,10 +1,6 @@
 #include "bitops.h"
 #include "viogpu.h"
 
-#if !DBG
-#include "bitops.tmh"
-#endif
-
 #pragma code_seg(push)
 #pragma code_seg()
 
