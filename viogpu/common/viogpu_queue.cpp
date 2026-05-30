@@ -29,9 +29,6 @@
 
 #include "viogpu_queue.h"
 #include "baseobj.h"
-#if !DBG
-#include "viogpu_queue.tmh"
-#endif
 
 static BOOLEAN BuildSGElement(VirtIOBufferDescriptor *sg, PVOID buf, ULONG size)
 {
